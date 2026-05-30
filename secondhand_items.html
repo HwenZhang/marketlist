@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二手闲置物品清单</title>
+<style>
+  :root { --line: #e2e2e2; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", -apple-system, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 16px 64px;
+  }
+  h1 { font-size: 26px; text-align: center; margin-bottom: 8px; }
+  h2 {
+    font-size: 20px;
+    margin: 36px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #333;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  th { background: #f5f5f5; font-weight: 600; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  td.item { font-weight: 500; min-width: 180px; }
+  td.price { font-weight: 700; color: #c0392b; white-space: nowrap; }
+  td.ship { white-space: nowrap; color: #555; font-size: 14px; }
+  a.link {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #2d6cdf;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  a.link:hover { background: #1b50b0; }
+  a.resp {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #1e9e5a;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  a.resp:hover { background: #157a44; }
+  .muted { color: #aaa; }
+  /* 图片缩略图，点击放大 */
+  img.thumb {
+    height: 72px;
+    width: auto;
+    border-radius: 6px;
+    cursor: zoom-in;
+    display: block;
+  }
+  .lightbox { display: none; }
+  .lightbox:target {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
+</style>
+</head>
+<body>
+
+<h1>二手闲置物品清单</h1>
+
+<h2>电子产品</h2>
+<table>
+  <thead><tr><th>物品</th><th>价格</th><th>链接</th><th>图片</th><th>配送方式</th></tr></thead>
+  <tbody>
+    <tr><td class="item">Xbox Series S(512GB) 游戏机 + 一个 xbox手柄</td><td class="price">75£</td><td><a class="link" href="https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav" target="_blank">查看</a></td><td><a href="#img1"><img class="thumb" src="./figures/IMG_2034.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">LG 4k 显示器</td><td class="price">50£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B07R9M25CT?ref=ppx_yo2ov_dt_b_fed_asin_title" target="_blank">查看</a></td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">KOORUI 165Hz, FHD 1080P 显示器</td><td class="price">10£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B0B2RCXTK9?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1" target="_blank">查看</a></td><td><a href="#img2"><img class="thumb" src="./figures/IMG_2035.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">键盘</td><td class="price">5£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B07YV7Y425?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1" target="_blank">查看</a></td><td><a href="#img3"><img class="thumb" src="./figures/IMG_2043.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">Instant Pot 高压锅</td><td class="price">0£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B00OP26T4K?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1" target="_blank">查看</a></td><td><a href="#img4"><img class="thumb" src="./figures/IMG_2045.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">体重秤</td><td class="price">0£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B071GYHSFX?ref=ppx_yo2ov_dt_b_fed_asin_title" target="_blank">查看</a></td><td class="muted">无</td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">小音箱</td><td class="price">0£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B07VVP8BGD?ref=ppx_yo2ov_dt_b_fed_asin_title" target="_blank">查看</a></td><td><a href="#img5"><img class="thumb" src="./figures/IMG_2038.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">可充电小台灯</td><td class="price">0£</td><td class="muted">无</td><td><a href="#img6"><img class="thumb" src="./figures/IMG_2042.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">无线耳机</td><td class="price">0£</td><td class="muted">无</td><td><a href="#img7"><img class="thumb" src="./figures/IMG_2044.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+  </tbody>
+</table>
+
+<h2>日用品</h2>
+<table>
+  <thead><tr><th>物品</th><th>价格</th><th>链接</th><th>图片</th><th>配送方式</th></tr></thead>
+  <tbody>
+    <tr><td class="item">骑行头盔</td><td class="price">0£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B085HP95Z2?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1" target="_blank">查看</a></td><td class="muted">无</td><td class="ship">Marston or Science Area 自取</td></tr>
+    <tr><td class="item">接线板</td><td class="price">0£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B07ZGDK9L5?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1" target="_blank">查看</a></td><td class="muted">无</td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">小汤锅(有盖)</td><td class="price">0£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B09DC7GD5C?ref=ppx_yo2ov_dt_b_fed_asin_title" target="_blank">查看</a></td><td><a href="#img8"><img class="thumb" src="./figures/IMG_2048.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">炒菜锅</td><td class="price">0£</td><td class="muted">无</td><td><a href="#img9"><img class="thumb" src="./figures/IMG_2046.jpeg" alt=""></a></td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">充电电池x4+充电器</td><td class="price">0£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B00HZV9TGS?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1" target="_blank">查看</a></td><td class="muted">无</td><td class="ship">Marston 自取</td></tr>
+    <tr><td class="item">HEAD Ti S6 Titanium 网球拍 + 网球12个</td><td class="price">20£</td><td><a class="link" href="https://www.amazon.co.uk/dp/B002KDM7EM?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1" target="_blank">查看</a></td><td><a href="#img10"><img class="thumb" src="./figures/IMG_2039.jpeg" alt=""></a></td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">壁球拍 + 壁球 2 个</td><td class="price">10£</td><td><a class="link" href="https://www.racketworld.co.uk/products/head-nano-ti-110-titanium-squash-racket" target="_blank">查看</a></td><td><a href="#img11"><img class="thumb" src="./figures/IMG_2040.jpeg" alt=""></a></td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">小桌子</td><td class="price">5£</td><td><a class="link" href="https://www.racketworld.co.uk/products/head-nano-ti-110-titanium-squash-racket" target="_blank">查看</a></td><td><a href="#img12"><img class="thumb" src="./figures/IMG_2037.jpeg" alt=""></a></td><td class="ship">Science Area 自取</td></tr>
+  </tbody>
+</table>
+
+<h2>书籍</h2>
+<table>
+  <thead><tr><th>物品</th><th>价格</th><th>链接</th><th>图片</th><th>配送方式</th></tr></thead>
+  <tbody>
+    <tr><td class="item">Stories of Hope</td><td class="price">0</td><td class="muted">无</td><td><a href="#img13"><img class="thumb" src="./figures/IMG_2041.jpeg" alt=""></a></td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">Elementary Engineering Fracture Mechanics</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">战争的试炼：十字军东征史</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">不能承受的生命之轻</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">金瓶梅（上）</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">金瓶梅（下）</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">Middlemarch</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">Essential C++ 中文版</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">Creep and Fracture of Ice</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">Statistics for Economics, Accounting and Business Studies</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">初级日语 第一册 第2版</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">初级日语 第二册 第2版</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">An Introduction to Physical Geography and the Environment</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+    <tr><td class="item">The Stress Analysis of Cracks Handbook</td><td class="price">0</td><td class="muted">无</td><td class="muted">无</td><td class="ship">Science Area 自取</td></tr>
+  </tbody>
+</table>
+
+<!-- 点击放大用的图层 -->
+<a href="#" id="img1" class="lightbox"><img src="./figures/IMG_2034.jpeg" alt=""></a>
+<a href="#" id="img2" class="lightbox"><img src="./figures/IMG_2035.jpeg" alt=""></a>
+<a href="#" id="img3" class="lightbox"><img src="./figures/IMG_2043.jpeg" alt=""></a>
+<a href="#" id="img4" class="lightbox"><img src="./figures/IMG_2045.jpeg" alt=""></a>
+<a href="#" id="img5" class="lightbox"><img src="./figures/IMG_2038.jpeg" alt=""></a>
+<a href="#" id="img6" class="lightbox"><img src="./figures/IMG_2042.jpeg" alt=""></a>
+<a href="#" id="img7" class="lightbox"><img src="./figures/IMG_2044.jpeg" alt=""></a>
+<a href="#" id="img8" class="lightbox"><img src="./figures/IMG_2048.jpeg" alt=""></a>
+<a href="#" id="img9" class="lightbox"><img src="./figures/IMG_2046.jpeg" alt=""></a>
+<a href="#" id="img10" class="lightbox"><img src="./figures/IMG_2039.jpeg" alt=""></a>
+<a href="#" id="img11" class="lightbox"><img src="./figures/IMG_2040.jpeg" alt=""></a>
+<a href="#" id="img12" class="lightbox"><img src="./figures/IMG_2037.jpeg" alt=""></a>
+<a href="#" id="img13" class="lightbox"><img src="./figures/IMG_2041.jpeg" alt=""></a>
+
+<script>
+  /* ===== Google 表单配置：把下面两个值改成你自己的 =====
+     FORM_BASE  : 表单的 viewform 地址（见文件说明）
+     ITEM_ENTRY : 表单里“物品”字段的 entry ID，形如 entry.1234567890 */
+  const FORM_BASE  = "https://docs.google.com/forms/d/e/1FAIpQLSdIIbmOkDqVtlSDxpwxxbSE1UaBU1u5Y7panRLNNp98kYJxXw/viewform";
+  const ITEM_ENTRY = "entry.1744656898";
+  /* ==================================================== */
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("table").forEach(tbl => {
+      const headRow = tbl.querySelector("thead tr");
+      const th = document.createElement("th");
+      th.textContent = "回应";
+      headRow.appendChild(th);
+
+      tbl.querySelectorAll("tbody tr").forEach(tr => {
+        const item = (tr.querySelector("td.item")?.textContent || "").trim();
+        const td = document.createElement("td");
+        const a = document.createElement("a");
+        a.className = "resp";
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = "我想要 →";
+        try {
+          const url = new URL(FORM_BASE);
+          url.searchParams.set("usp", "pp_url");
+          url.searchParams.set(ITEM_ENTRY, item);
+          a.href = url.toString();
+        } catch (e) {
+          a.href = FORM_BASE;
+        }
+        td.appendChild(a);
+        tr.appendChild(td);
+      });
+    });
+  });
+</script>
+</body>
+</html>
