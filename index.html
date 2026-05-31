@@ -5,64 +5,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>二手闲置物品清单</title>
 <style>
+  :root { --line: #e2e2e2; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", -apple-system, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 16px 64px;
+  }
+  h1 { font-size: 26px; text-align: center; margin-bottom: 8px; }
+  p.sub { text-align: center; color: #8a7d75; margin: 0 0 8px; }
+  h2 {
+    font-size: 20px;
+    margin: 36px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #333;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  th { background: #f5f5f5; font-weight: 600; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  td.item { font-weight: 500; min-width: 180px; }
+  td.price { font-weight: 700; color: #c0392b; white-space: nowrap; }
+  td.ship { white-space: nowrap; color: #555; font-size: 14px; }
+  a.link {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #2d6cdf;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  a.link:hover { background: #1b50b0; }
+  a.resp {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #1e9e5a;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  a.resp:hover { background: #157a44; }
+  .muted { color: #aaa; }
+  /* 图片缩略图，点击放大 */
+  img.thumb {
+    height: 72px;
+    width: auto;
+    border-radius: 6px;
+    cursor: zoom-in;
+    display: block;
+  }
+  .lightbox { display: none; }
+  .lightbox:target {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
+
+  /* ===== chiikawa 风格可爱装饰（原创插画）===== */
   html {
     background:
-      radial-gradient(circle at 18% 14%, #fff0f5 0, transparent 38%),
-      radial-gradient(circle at 84% 10%, #eef6ff 0, transparent 34%),
-      radial-gradient(circle at 88% 86%, #fff6e6 0, transparent 34%),
+      radial-gradient(circle at 18% 12%, #fff0f5 0, transparent 38%),
+      radial-gradient(circle at 85% 6%, #eef6ff 0, transparent 34%),
+      radial-gradient(circle at 90% 88%, #fff6e6 0, transparent 34%),
       #fdf4f7;
   }
   body {
-    font-family: "PingFang SC", "Microsoft YaHei", -apple-system, system-ui, sans-serif;
-    color: #2a2420;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 24px;
-    text-align: center;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 34px rgba(190, 130, 160, .14);
     position: relative;
     z-index: 1;
+    margin-top: 28px;
+    margin-bottom: 56px;
   }
-  .card {
-    background: #ffffff;
-    border-radius: 24px;
-    box-shadow: 0 10px 40px rgba(190, 130, 160, .16);
-    padding: 40px 32px 32px;
-    max-width: 92vw;
-  }
-  h1 { font-size: 26px; margin: 6px 0 8px; }
   h1 .mascot { vertical-align: middle; margin: 0 4px; }
-  p.sub { color: #8a7d75; margin-top: 0; margin-bottom: 28px; }
-  a.btn {
-    display: block;
-    width: 280px;
-    max-width: 80vw;
-    margin: 12px auto;
-    padding: 16px 20px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
-    box-shadow: 0 3px 10px rgba(0,0,0,.10);
-    transition: transform .12s;
-  }
-  a.btn:hover { transform: translateY(-2px); }
-  a.primary { background: #ff8fb0; color: #fff; }
-  a.primary:hover { background: #f4769b; }
-  a.free { background: #6cc59a; color: #fff; }
-  a.free:hover { background: #54b385; }
-  .foot { margin-top: 26px; color: #b3a59c; font-size: 13px; }
-  /* 装饰 */
+  h2 { border-bottom-color: #ffc2d4; }
+  th { background: #fff2f6; }
+  tbody tr:nth-child(even) { background: #fff8fb; }
   .deco { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
   .deco svg { position: fixed; filter: drop-shadow(0 4px 5px rgba(0,0,0,.08)); }
-  .deco .c1 { top: 22px; left: 20px; transform: rotate(-8deg); }
-  .deco .c2 { bottom: 28px; left: 30px; transform: rotate(7deg); }
-  .deco .c3 { top: 60px; right: 28px; transform: rotate(9deg); }
-  .deco .c4 { bottom: 30px; right: 24px; transform: rotate(-7deg); }
-  @media (max-width: 720px) { .deco .c3, .deco .c2 { display: none; } }
+  .deco .c1 { top: 20px; left: 18px; transform: rotate(-8deg); }
+  .deco .c2 { bottom: 26px; left: 26px; transform: rotate(7deg); }
+  .deco .c3 { top: 150px; right: 22px; transform: rotate(9deg); }
+  .deco .c4 { bottom: 28px; right: 20px; transform: rotate(-7deg); }
+  .deco .c5 { top: 46%; left: 12px; transform: rotate(4deg); }
+  .deco .c6 { top: 40%; right: 14px; transform: rotate(-5deg); }
+  @media (max-width: 1180px) { .deco .side { display: none; } }
 </style>
 </head>
 <body>
@@ -103,19 +148,178 @@
 </svg>
 
 <div class="deco" aria-hidden="true">
-  <svg class="c1" width="84" height="84"><use href="#cuti-bunny"/></svg>
-  <svg class="c2" width="68" height="68"><use href="#cuti-bird"/></svg>
-  <svg class="c3" width="76" height="76"><use href="#cuti-cat"/></svg>
-  <svg class="c4" width="72" height="72"><use href="#cuti-bunny"/></svg>
+  <svg class="c1" width="80" height="80"><use href="#cuti-bunny"/></svg>
+  <svg class="c2 side" width="64" height="64"><use href="#cuti-bird"/></svg>
+  <svg class="c3 side" width="74" height="74"><use href="#cuti-cat"/></svg>
+  <svg class="c4" width="70" height="70"><use href="#cuti-bunny"/></svg>
+  <svg class="c5 side" width="58" height="58"><use href="#cuti-bird"/></svg>
+  <svg class="c6 side" width="60" height="60"><use href="#cuti-cat"/></svg>
 </div>
 
-<div class="card">
-  <h1><svg class="mascot" width="40" height="40"><use href="#cuti-bird"/></svg>二手闲置物品清单<svg class="mascot" width="40" height="40"><use href="#cuti-bunny"/></svg></h1>
-  <p class="sub">点击进入查看，喜欢的物品可直接登记联系方式</p>
-  <a class="btn primary" href="./secondhand_items.html">查看清单（标价版）</a>
-  <a class="btn free" href="./secondhand_items_free.html">查看清单（免费赠送版）</a>
-  <div class="foot">Marston / Science Area 自取</div>
-</div>
+<h1><svg class="mascot" width="42" height="42"><use href="#cuti-bunny"/></svg>二手闲置物品清单<svg class="mascot" width="42" height="42"><use href="#cuti-cat"/></svg></h1>
+<p class="sub">喜欢的物品点「我想要 →」登记姓名和联系方式即可～</p>
+
+<div id="list"></div>
+
+<script>
+  /* =========================================================
+     维护说明：以后增删改物品，只改下面这一个 ITEMS 列表即可。
+     字段：cat 分类 / name 名称 / price 真实价格(备份用) /
+           link 链接(没有就留 "") / img 图片路径(没有就留 "") / ship 配送方式
+     线上默认所有价格显示为 0；如需查看真实标价（备份），
+     在网址后加 ?priced=1，或把下面的 FREE_MODE 改成 false。
+     ========================================================= */
+
+  const FREE_MODE   = true;
+  const FORM_BASE   = "https://docs.google.com/forms/d/e/1FAIpQLSdIIbmOkDqVtlSDxpwxxbSE1UaBU1u5Y7panRLNNp98kYJxXw/viewform";
+  const ITEM_ENTRY  = "entry.1744656898";
+  const CLAIMED_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRNMMbQ3Q4H3-0n-w84dn0oVnQbPd5kAWoWzwN7EYdowhtiNIbiLl0r9E6s3vOAFTnZEpslIrsZ26LO/pub?gid=378112170&single=true&output=csv";
+
+  const ITEMS = [
+    // ---------- 电子产品 ----------
+    { cat:"电子产品", name:"Xbox Series S(512GB) 游戏机 + 一个 xbox手柄", price:"75£", link:"https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav", img:"figures/IMG_2034.jpeg", ship:"Marston 自取" },
+    { cat:"电子产品", name:"LG 4k 显示器", price:"50£", link:"https://www.amazon.co.uk/dp/B07R9M25CT?ref=ppx_yo2ov_dt_b_fed_asin_title", img:"", ship:"Science Area 自取" },
+    { cat:"电子产品", name:"KOORUI 165Hz, FHD 1080P 显示器", price:"10£", link:"https://www.amazon.co.uk/dp/B0B2RCXTK9?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"figures/IMG_2035.jpeg", ship:"Marston 自取" },
+    { cat:"电子产品", name:"键盘", price:"5£", link:"https://www.amazon.co.uk/dp/B07YV7Y425?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1", img:"figures/IMG_2043.jpeg", ship:"Marston 自取" },
+    { cat:"电子产品", name:"Instant Pot 高压锅", price:"0£", link:"https://www.amazon.co.uk/dp/B00OP26T4K?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"figures/IMG_2045.jpeg", ship:"Marston 自取" },
+    { cat:"电子产品", name:"体重秤", price:"0£", link:"https://www.amazon.co.uk/dp/B071GYHSFX?ref=ppx_yo2ov_dt_b_fed_asin_title", img:"", ship:"Marston 自取" },
+    { cat:"电子产品", name:"小音箱", price:"0£", link:"https://www.amazon.co.uk/dp/B07VVP8BGD?ref=ppx_yo2ov_dt_b_fed_asin_title", img:"figures/IMG_2038.jpeg", ship:"Marston 自取" },
+    { cat:"电子产品", name:"可充电小台灯", price:"0£", link:"", img:"figures/IMG_2042.jpeg", ship:"Marston 自取" },
+    { cat:"电子产品", name:"无线耳机", price:"0£", link:"", img:"figures/IMG_2044.jpeg", ship:"Marston 自取" },
+
+    // ---------- 日用品 ----------
+    { cat:"日用品", name:"骑行头盔", price:"0£", link:"https://www.amazon.co.uk/dp/B085HP95Z2?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"", ship:"Marston or Science Area 自取" },
+    { cat:"日用品", name:"接线板", price:"0£", link:"https://www.amazon.co.uk/dp/B07ZGDK9L5?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"", ship:"Marston 自取" },
+    { cat:"日用品", name:"小汤锅(有盖)", price:"0£", link:"https://www.amazon.co.uk/dp/B09DC7GD5C?ref=ppx_yo2ov_dt_b_fed_asin_title", img:"figures/IMG_2048.jpeg", ship:"Marston 自取" },
+    { cat:"日用品", name:"炒菜锅", price:"0£", link:"", img:"figures/IMG_2046.jpeg", ship:"Marston 自取" },
+    { cat:"日用品", name:"充电电池x4+充电器", price:"0£", link:"https://www.amazon.co.uk/dp/B00HZV9TGS?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"", ship:"Marston 自取" },
+    { cat:"日用品", name:"HEAD Ti S6 Titanium 网球拍 + 网球12个", price:"20£", link:"https://www.amazon.co.uk/dp/B002KDM7EM?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"figures/IMG_2039.jpeg", ship:"Science Area 自取" },
+    { cat:"日用品", name:"壁球拍 + 壁球 2 个", price:"10£", link:"https://www.racketworld.co.uk/products/head-nano-ti-110-titanium-squash-racket", img:"figures/IMG_2040.jpeg", ship:"Science Area 自取" },
+    { cat:"日用品", name:"小桌子", price:"5£", link:"https://www.racketworld.co.uk/products/head-nano-ti-110-titanium-squash-racket", img:"figures/IMG_2037.jpeg", ship:"Science Area 自取" },
+
+    // ---------- 书籍 ----------
+    { cat:"书籍", name:"Stories of Hope", price:"0", link:"", img:"figures/IMG_2041.jpeg", ship:"Science Area 自取" },
+    { cat:"书籍", name:"Elementary Engineering Fracture Mechanics", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"战争的试炼：十字军东征史", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"不能承受的生命之轻", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"金瓶梅（上）", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"金瓶梅（下）", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"Middlemarch", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"Essential C++ 中文版", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"Creep and Fracture of Ice", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"Statistics for Economics, Accounting and Business Studies", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"初级日语 第一册 第2版", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"初级日语 第二册 第2版", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"An Introduction to Physical Geography and the Environment", price:"0", link:"", img:"", ship:"Science Area 自取" },
+    { cat:"书籍", name:"The Stress Analysis of Cracks Handbook", price:"0", link:"", img:"", ship:"Science Area 自取" },
+  ];
+
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  function parseSingleColumnCSV(text) {
+    const out = [];
+    text.split(/\r?\n/).forEach(line => {
+      if (line === "") return;
+      let v = line;
+      if (v[0] === '"' && v[v.length - 1] === '"') v = v.slice(1, -1).replace(/""/g, '"');
+      out.push(norm(v));
+    });
+    return out;
+  }
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const priced = !FREE_MODE || new URLSearchParams(location.search).get("priced") === "1";
+    const root = document.getElementById("list");
+    const cats = [...new Set(ITEMS.map(it => it.cat))];
+    const lightboxes = [];
+    let imgN = 0;
+
+    cats.forEach(cat => {
+      const h2 = document.createElement("h2");
+      h2.textContent = cat;
+      root.appendChild(h2);
+
+      const table = document.createElement("table");
+      table.innerHTML = "<thead><tr><th>物品</th><th>价格</th><th>链接</th><th>图片</th><th>配送方式</th><th>回应</th></tr></thead>";
+      const tbody = document.createElement("tbody");
+
+      ITEMS.filter(it => it.cat === cat).forEach(it => {
+        const tr = document.createElement("tr");
+        tr.dataset.item = norm(it.name);
+
+        const tdItem = document.createElement("td");
+        tdItem.className = "item";
+        tdItem.textContent = it.name;
+
+        const tdPrice = document.createElement("td");
+        tdPrice.className = "price";
+        tdPrice.textContent = priced ? it.price : "0";
+
+        const tdLink = document.createElement("td");
+        if (it.link) {
+          const a = document.createElement("a");
+          a.className = "link"; a.href = it.link; a.target = "_blank"; a.rel = "noopener";
+          a.textContent = "查看";
+          tdLink.appendChild(a);
+        } else { tdLink.className = "muted"; tdLink.textContent = "无"; }
+
+        const tdImg = document.createElement("td");
+        if (it.img) {
+          imgN++;
+          const a = document.createElement("a"); a.href = "#img" + imgN;
+          const img = document.createElement("img"); img.className = "thumb"; img.src = it.img; img.alt = "";
+          a.appendChild(img); tdImg.appendChild(a);
+          const lb = document.createElement("a"); lb.href = "#"; lb.id = "img" + imgN; lb.className = "lightbox";
+          const big = document.createElement("img"); big.src = it.img; big.alt = "";
+          lb.appendChild(big); lightboxes.push(lb);
+        } else { tdImg.className = "muted"; tdImg.textContent = "无"; }
+
+        const tdShip = document.createElement("td");
+        tdShip.className = "ship"; tdShip.textContent = it.ship;
+
+        const tdResp = document.createElement("td");
+        const r = document.createElement("a");
+        r.className = "resp"; r.target = "_blank"; r.rel = "noopener"; r.textContent = "我想要 →";
+        try {
+          const u = new URL(FORM_BASE);
+          u.searchParams.set("usp", "pp_url");
+          u.searchParams.set(ITEM_ENTRY, it.name);
+          r.href = u.toString();
+        } catch (e) { r.href = FORM_BASE; }
+        tdResp.appendChild(r);
+
+        tr.append(tdItem, tdPrice, tdLink, tdImg, tdShip, tdResp);
+        tbody.appendChild(tr);
+      });
+
+      table.appendChild(tbody);
+      root.appendChild(table);
+    });
+
+    lightboxes.forEach(lb => document.body.appendChild(lb));
+
+    // 拉取“已登记物品”，隐藏对应条目
+    if (!CLAIMED_CSV) return;
+    try {
+      const sep = CLAIMED_CSV.includes("?") ? "&" : "?";
+      const res = await fetch(CLAIMED_CSV + sep + "t=" + Date.now());
+      const claimed = new Set(parseSingleColumnCSV(await res.text()));
+      document.querySelectorAll("#list tbody tr").forEach(tr => {
+        if (claimed.has(tr.dataset.item)) tr.style.display = "none";
+      });
+      document.querySelectorAll("#list table").forEach(tbl => {
+        const anyVisible = [...tbl.querySelectorAll("tbody tr")].some(tr => tr.style.display !== "none");
+        if (!anyVisible) {
+          tbl.style.display = "none";
+          const h2 = tbl.previousElementSibling;
+          if (h2 && h2.tagName === "H2") h2.style.display = "none";
+        }
+      });
+    } catch (e) {
+      console.warn("无法加载已登记列表，全部正常显示：", e);
+    }
+  });
+</script>
 
 </body>
 </html>
