@@ -76,11 +76,86 @@
     z-index: 100;
   }
   .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
+
+  /* ===== chiikawa 风格可爱装饰（原创插画）===== */
+  html {
+    background:
+      radial-gradient(circle at 18% 12%, #fff0f5 0, transparent 38%),
+      radial-gradient(circle at 85% 6%, #eef6ff 0, transparent 34%),
+      radial-gradient(circle at 90% 88%, #fff6e6 0, transparent 34%),
+      #fdf4f7;
+  }
+  body {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 34px rgba(190, 130, 160, .14);
+    position: relative;
+    z-index: 1;
+    margin-top: 28px;
+    margin-bottom: 56px;
+  }
+  h1 .mascot { vertical-align: middle; margin: 0 4px; }
+  h2 { border-bottom-color: #ffc2d4; }
+  th { background: #fff2f6; }
+  tbody tr:nth-child(even) { background: #fff8fb; }
+  .deco { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .deco svg { position: fixed; filter: drop-shadow(0 4px 5px rgba(0,0,0,.08)); }
+  .deco .c1 { top: 20px; left: 18px; transform: rotate(-8deg); }
+  .deco .c2 { bottom: 26px; left: 26px; transform: rotate(7deg); }
+  .deco .c3 { top: 150px; right: 22px; transform: rotate(9deg); }
+  .deco .c4 { bottom: 28px; right: 20px; transform: rotate(-7deg); }
+  .deco .c5 { top: 46%; left: 12px; transform: rotate(4deg); }
+  .deco .c6 { top: 40%; right: 14px; transform: rotate(-5deg); }
+  @media (max-width: 1180px) { .deco .side { display: none; } }
 </style>
 </head>
 <body>
 
-<h1>二手闲置物品清单</h1>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cuti-bunny" viewBox="0 0 120 120">
+      <ellipse cx="42" cy="30" rx="9" ry="22" fill="#fff" stroke="#5a5048" stroke-width="3.5"/>
+      <ellipse cx="78" cy="30" rx="9" ry="22" fill="#fff" stroke="#5a5048" stroke-width="3.5"/>
+      <ellipse cx="60" cy="70" rx="40" ry="38" fill="#fff" stroke="#5a5048" stroke-width="3.5"/>
+      <circle cx="47" cy="68" r="4.6" fill="#5a5048"/>
+      <circle cx="73" cy="68" r="4.6" fill="#5a5048"/>
+      <ellipse cx="38" cy="79" rx="6.5" ry="4.5" fill="#ffb3c1"/>
+      <ellipse cx="82" cy="79" rx="6.5" ry="4.5" fill="#ffb3c1"/>
+      <path d="M54 79 q6 7 12 0" fill="none" stroke="#5a5048" stroke-width="2.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="cuti-bird" viewBox="0 0 120 120">
+      <ellipse cx="60" cy="66" rx="40" ry="40" fill="#fff2c2" stroke="#5a5048" stroke-width="3.5"/>
+      <path d="M48 28 q12 -16 24 0" fill="#fff2c2" stroke="#5a5048" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="48" cy="62" r="4.6" fill="#5a5048"/>
+      <circle cx="72" cy="62" r="4.6" fill="#5a5048"/>
+      <path d="M55 70 l5 6 l5 -6 z" fill="#ff9e5e" stroke="#5a5048" stroke-width="2" stroke-linejoin="round"/>
+      <ellipse cx="40" cy="73" rx="6" ry="4" fill="#ffc6a8"/>
+      <ellipse cx="80" cy="73" rx="6" ry="4" fill="#ffc6a8"/>
+    </symbol>
+    <symbol id="cuti-cat" viewBox="0 0 120 120">
+      <path d="M34 42 l4 -24 l20 14 z" fill="#fff" stroke="#5a5048" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M86 42 l-4 -24 l-20 14 z" fill="#fff" stroke="#5a5048" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="60" cy="72" rx="38" ry="35" fill="#fff" stroke="#5a5048" stroke-width="3.5"/>
+      <circle cx="48" cy="70" r="4.6" fill="#5a5048"/>
+      <circle cx="72" cy="70" r="4.6" fill="#5a5048"/>
+      <ellipse cx="38" cy="80" rx="6" ry="4" fill="#ffb3c1"/>
+      <ellipse cx="82" cy="80" rx="6" ry="4" fill="#ffb3c1"/>
+      <path d="M54 78 q6 6 12 0 M60 75 l0 4" fill="none" stroke="#5a5048" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M30 72 l-13 -4 M30 78 l-13 4 M90 72 l13 -4 M90 78 l13 4" stroke="#5a5048" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="deco" aria-hidden="true">
+  <svg class="c1" width="80" height="80"><use href="#cuti-bunny"/></svg>
+  <svg class="c2 side" width="64" height="64"><use href="#cuti-bird"/></svg>
+  <svg class="c3 side" width="74" height="74"><use href="#cuti-cat"/></svg>
+  <svg class="c4" width="70" height="70"><use href="#cuti-bunny"/></svg>
+  <svg class="c5 side" width="58" height="58"><use href="#cuti-bird"/></svg>
+  <svg class="c6 side" width="60" height="60"><use href="#cuti-cat"/></svg>
+</div>
+
+<h1><svg class="mascot" width="42" height="42"><use href="#cuti-bunny"/></svg>二手闲置物品清单<svg class="mascot" width="42" height="42"><use href="#cuti-cat"/></svg></h1>
 
 <h2>电子产品</h2>
 <table>
@@ -150,14 +225,31 @@
 <a href="#" id="img13" class="lightbox"><img src="./figures/IMG_2041.jpeg" alt=""></a>
 
 <script>
-  /* ===== Google 表单配置：把下面两个值改成你自己的 =====
-     FORM_BASE  : 表单的 viewform 地址（见文件说明）
-     ITEM_ENTRY : 表单里“物品”字段的 entry ID，形如 entry.1234567890 */
-  const FORM_BASE  = "https://docs.google.com/forms/d/e/1FAIpQLSdIIbmOkDqVtlSDxpwxxbSE1UaBU1u5Y7panRLNNp98kYJxXw/viewform";
-  const ITEM_ENTRY = "entry.1744656898";
-  /* ==================================================== */
+  /* ===== 配置：改这里 =====
+     FORM_BASE   : 表单的 viewform 地址
+     ITEM_ENTRY  : 表单里“物品”字段的 entry ID
+     CLAIMED_CSV : “已登记物品”发布为 CSV 的链接（单列=物品名）。留空则不自动隐藏。 */
+  const FORM_BASE   = "https://docs.google.com/forms/d/e/1FAIpQLSdIIbmOkDqVtlSDxpwxxbSE1UaBU1u5Y7panRLNNp98kYJxXw/viewform";
+  const ITEM_ENTRY  = "entry.1744656898";
+  const CLAIMED_CSV = "";
+  /* ======================== */
 
-  document.addEventListener("DOMContentLoaded", () => {
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  // 解析单列 CSV（处理引号包裹与字段内逗号）
+  function parseSingleColumnCSV(text) {
+    const out = [];
+    text.split(/\r?\n/).forEach(line => {
+      if (line === "") return;
+      let v = line;
+      if (v[0] === '"' && v[v.length - 1] === '"') v = v.slice(1, -1).replace(/""/g, '"');
+      out.push(norm(v));
+    });
+    return out;
+  }
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    // 1) 给每行加“我想要”回应按钮
     document.querySelectorAll("table").forEach(tbl => {
       const headRow = tbl.querySelector("thead tr");
       const th = document.createElement("th");
@@ -165,7 +257,8 @@
       headRow.appendChild(th);
 
       tbl.querySelectorAll("tbody tr").forEach(tr => {
-        const item = (tr.querySelector("td.item")?.textContent || "").trim();
+        const item = norm(tr.querySelector("td.item")?.textContent);
+        tr.dataset.item = item;
         const td = document.createElement("td");
         const a = document.createElement("a");
         a.className = "resp";
@@ -177,13 +270,33 @@
           url.searchParams.set("usp", "pp_url");
           url.searchParams.set(ITEM_ENTRY, item);
           a.href = url.toString();
-        } catch (e) {
-          a.href = FORM_BASE;
-        }
+        } catch (e) { a.href = FORM_BASE; }
         td.appendChild(a);
         tr.appendChild(td);
       });
     });
+
+    // 2) 拉取“已登记物品”，隐藏对应条目
+    if (!CLAIMED_CSV) return;
+    try {
+      const sep = CLAIMED_CSV.includes("?") ? "&" : "?";
+      const res = await fetch(CLAIMED_CSV + sep + "t=" + Date.now());
+      const claimed = new Set(parseSingleColumnCSV(await res.text()));
+      document.querySelectorAll("tbody tr").forEach(tr => {
+        if (claimed.has(tr.dataset.item)) tr.style.display = "none";
+      });
+      // 整个分类都空了，就连标题一起隐藏
+      document.querySelectorAll("table").forEach(tbl => {
+        const anyVisible = [...tbl.querySelectorAll("tbody tr")].some(tr => tr.style.display !== "none");
+        if (!anyVisible) {
+          tbl.style.display = "none";
+          const h2 = tbl.previousElementSibling;
+          if (h2 && h2.tagName === "H2") h2.style.display = "none";
+        }
+      });
+    } catch (e) {
+      console.warn("无法加载已登记列表，全部正常显示：", e);
+    }
   });
 </script>
 </body>

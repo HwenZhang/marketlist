@@ -5,10 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>二手闲置物品清单</title>
 <style>
+  html {
+    background:
+      radial-gradient(circle at 18% 14%, #fff0f5 0, transparent 38%),
+      radial-gradient(circle at 84% 10%, #eef6ff 0, transparent 34%),
+      radial-gradient(circle at 88% 86%, #fff6e6 0, transparent 34%),
+      #fdf4f7;
+  }
   body {
     font-family: "PingFang SC", "Microsoft YaHei", -apple-system, system-ui, sans-serif;
-    background: #f6f7f9;
-    color: #1a1a1a;
+    color: #2a2420;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,33 +23,99 @@
     margin: 0;
     padding: 24px;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
-  h1 { font-size: 28px; margin-bottom: 8px; }
-  p.sub { color: #666; margin-top: 0; margin-bottom: 32px; }
+  .card {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(190, 130, 160, .16);
+    padding: 40px 32px 32px;
+    max-width: 92vw;
+  }
+  h1 { font-size: 26px; margin: 6px 0 8px; }
+  h1 .mascot { vertical-align: middle; margin: 0 4px; }
+  p.sub { color: #8a7d75; margin-top: 0; margin-bottom: 28px; }
   a.btn {
     display: block;
     width: 280px;
-    max-width: 90vw;
+    max-width: 80vw;
     margin: 12px auto;
     padding: 16px 20px;
-    border-radius: 12px;
+    border-radius: 14px;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    box-shadow: 0 3px 10px rgba(0,0,0,.10);
+    transition: transform .12s;
   }
-  a.primary { background: #2d6cdf; color: #fff; }
-  a.primary:hover { background: #1b50b0; }
-  a.free { background: #1e9e5a; color: #fff; }
-  a.free:hover { background: #157a44; }
-  .foot { margin-top: 28px; color: #999; font-size: 13px; }
+  a.btn:hover { transform: translateY(-2px); }
+  a.primary { background: #ff8fb0; color: #fff; }
+  a.primary:hover { background: #f4769b; }
+  a.free { background: #6cc59a; color: #fff; }
+  a.free:hover { background: #54b385; }
+  .foot { margin-top: 26px; color: #b3a59c; font-size: 13px; }
+  /* 装饰 */
+  .deco { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .deco svg { position: fixed; filter: drop-shadow(0 4px 5px rgba(0,0,0,.08)); }
+  .deco .c1 { top: 22px; left: 20px; transform: rotate(-8deg); }
+  .deco .c2 { bottom: 28px; left: 30px; transform: rotate(7deg); }
+  .deco .c3 { top: 60px; right: 28px; transform: rotate(9deg); }
+  .deco .c4 { bottom: 30px; right: 24px; transform: rotate(-7deg); }
+  @media (max-width: 720px) { .deco .c3, .deco .c2 { display: none; } }
 </style>
 </head>
 <body>
-  <h1>二手闲置物品清单</h1>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cuti-bunny" viewBox="0 0 120 120">
+      <ellipse cx="42" cy="30" rx="9" ry="22" fill="#fff" stroke="#5a5048" stroke-width="3.5"/>
+      <ellipse cx="78" cy="30" rx="9" ry="22" fill="#fff" stroke="#5a5048" stroke-width="3.5"/>
+      <ellipse cx="60" cy="70" rx="40" ry="38" fill="#fff" stroke="#5a5048" stroke-width="3.5"/>
+      <circle cx="47" cy="68" r="4.6" fill="#5a5048"/>
+      <circle cx="73" cy="68" r="4.6" fill="#5a5048"/>
+      <ellipse cx="38" cy="79" rx="6.5" ry="4.5" fill="#ffb3c1"/>
+      <ellipse cx="82" cy="79" rx="6.5" ry="4.5" fill="#ffb3c1"/>
+      <path d="M54 79 q6 7 12 0" fill="none" stroke="#5a5048" stroke-width="2.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="cuti-bird" viewBox="0 0 120 120">
+      <ellipse cx="60" cy="66" rx="40" ry="40" fill="#fff2c2" stroke="#5a5048" stroke-width="3.5"/>
+      <path d="M48 28 q12 -16 24 0" fill="#fff2c2" stroke="#5a5048" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="48" cy="62" r="4.6" fill="#5a5048"/>
+      <circle cx="72" cy="62" r="4.6" fill="#5a5048"/>
+      <path d="M55 70 l5 6 l5 -6 z" fill="#ff9e5e" stroke="#5a5048" stroke-width="2" stroke-linejoin="round"/>
+      <ellipse cx="40" cy="73" rx="6" ry="4" fill="#ffc6a8"/>
+      <ellipse cx="80" cy="73" rx="6" ry="4" fill="#ffc6a8"/>
+    </symbol>
+    <symbol id="cuti-cat" viewBox="0 0 120 120">
+      <path d="M34 42 l4 -24 l20 14 z" fill="#fff" stroke="#5a5048" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M86 42 l-4 -24 l-20 14 z" fill="#fff" stroke="#5a5048" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="60" cy="72" rx="38" ry="35" fill="#fff" stroke="#5a5048" stroke-width="3.5"/>
+      <circle cx="48" cy="70" r="4.6" fill="#5a5048"/>
+      <circle cx="72" cy="70" r="4.6" fill="#5a5048"/>
+      <ellipse cx="38" cy="80" rx="6" ry="4" fill="#ffb3c1"/>
+      <ellipse cx="82" cy="80" rx="6" ry="4" fill="#ffb3c1"/>
+      <path d="M54 78 q6 6 12 0 M60 75 l0 4" fill="none" stroke="#5a5048" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M30 72 l-13 -4 M30 78 l-13 4 M90 72 l13 -4 M90 78 l13 4" stroke="#5a5048" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="deco" aria-hidden="true">
+  <svg class="c1" width="84" height="84"><use href="#cuti-bunny"/></svg>
+  <svg class="c2" width="68" height="68"><use href="#cuti-bird"/></svg>
+  <svg class="c3" width="76" height="76"><use href="#cuti-cat"/></svg>
+  <svg class="c4" width="72" height="72"><use href="#cuti-bunny"/></svg>
+</div>
+
+<div class="card">
+  <h1><svg class="mascot" width="40" height="40"><use href="#cuti-bird"/></svg>二手闲置物品清单<svg class="mascot" width="40" height="40"><use href="#cuti-bunny"/></svg></h1>
   <p class="sub">点击进入查看，喜欢的物品可直接登记联系方式</p>
   <a class="btn primary" href="./secondhand_items.html">查看清单（标价版）</a>
   <a class="btn free" href="./secondhand_items_free.html">查看清单（免费赠送版）</a>
   <div class="foot">Marston / Science Area 自取</div>
+</div>
+
 </body>
 </html>
