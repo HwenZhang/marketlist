@@ -163,11 +163,11 @@
 
 <script>
   /* =========================================================
-     维护说明：以后增删改物品，只改下面这一个 ITEMS 列表即可。
-     字段：cat 分类 / name 名称 / price 真实价格(备份用) /
-           link 链接(没有就留 "") / img 图片路径(没有就留 "") / ship 配送方式
-     线上默认所有价格显示为 0；如需查看真实标价（备份），
-     在网址后加 ?priced=1，或把下面的 FREE_MODE 改成 false。
+     维护说明：增删改物品请编辑 secondhand_items_free.md，然后运行
+       python3 build.py
+     它会自动同步下面的 ITEMS（真实价格按名称保留，作为标价备份）。
+     不要手改下面 ITEMS_START/END 之间的内容。
+     线上默认所有价格显示为 0；查看真实标价在网址后加 ?priced=1。
      ========================================================= */
 
   const FREE_MODE   = true;
@@ -175,6 +175,7 @@
   const ITEM_ENTRY  = "entry.1744656898";
   const CLAIMED_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRNMMbQ3Q4H3-0n-w84dn0oVnQbPd5kAWoWzwN7EYdowhtiNIbiLl0r9E6s3vOAFTnZEpslIrsZ26LO/pub?gid=378112170&single=true&output=csv";
 
+  /* ITEMS_START — 由 build.py 从 secondhand_items_free.md 自动生成，勿手改 */
   const ITEMS = [
     // ---------- 电子产品 ----------
     { cat:"电子产品", name:"Xbox Series S(512GB) 游戏机 + 一个 xbox手柄", price:"75£", link:"https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav", img:"figures/IMG_2034.jpeg", ship:"Marston 自取" },
@@ -186,7 +187,6 @@
     { cat:"电子产品", name:"小音箱", price:"0£", link:"https://www.amazon.co.uk/dp/B07VVP8BGD?ref=ppx_yo2ov_dt_b_fed_asin_title", img:"figures/IMG_2038.jpeg", ship:"Marston 自取" },
     { cat:"电子产品", name:"可充电小台灯", price:"0£", link:"", img:"figures/IMG_2042.jpeg", ship:"Science Area 自取" },
     { cat:"电子产品", name:"无线耳机", price:"0£", link:"", img:"figures/IMG_2044.jpeg", ship:"Marston 自取" },
-
     // ---------- 日用品 ----------
     { cat:"日用品", name:"骑行头盔", price:"0£", link:"https://www.amazon.co.uk/dp/B085HP95Z2?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"", ship:"Marston or Science Area 自取" },
     { cat:"日用品", name:"接线板", price:"0£", link:"https://www.amazon.co.uk/dp/B07ZGDK9L5?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"", ship:"Marston 自取" },
@@ -195,8 +195,7 @@
     { cat:"日用品", name:"充电电池x4+充电器", price:"0£", link:"https://www.amazon.co.uk/dp/B00HZV9TGS?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"", ship:"Science Area or Marston 自取" },
     { cat:"日用品", name:"HEAD Ti S6 Titanium 网球拍 + 网球12个", price:"20£", link:"https://www.amazon.co.uk/dp/B002KDM7EM?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"figures/IMG_2039.jpeg", ship:"Science Area 自取" },
     { cat:"日用品", name:"壁球拍 + 壁球 2 个", price:"10£", link:"https://www.racketworld.co.uk/products/head-nano-ti-110-titanium-squash-racket", img:"figures/IMG_2040.jpeg", ship:"Science Area 自取" },
-    { cat:"日用品", name:"小桌子", price:"5£", link:"https://www.racketworld.co.uk/products/head-nano-ti-110-titanium-squash-racket", img:"figures/IMG_2037.jpeg", ship:"Science Area 自取" },
-
+    { cat:"日用品", name:"小桌子", price:"5£", link:"https://www.racketworld.co.uk/products/head-nano-ti-110-titanium-squash-racket", img:"figures/IMG_2037.jpeg", ship:"Marston 自取" },
     // ---------- 书籍 ----------
     { cat:"书籍", name:"Stories of Hope", price:"0", link:"", img:"figures/IMG_2041.jpeg", ship:"Science Area 自取" },
     { cat:"书籍", name:"Elementary Engineering Fracture Mechanics", price:"0", link:"", img:"", ship:"Science Area 自取" },
@@ -215,6 +214,7 @@
     { cat:"书籍", name:"The Stress Analysis of Cracks Handbook", price:"0", link:"", img:"", ship:"Science Area 自取" },
     { cat:"书籍", name:"Lonely Castle in the Mirror", price:"0", link:"", img:"", ship:"Science Area 自取" },
   ];
+  /* ITEMS_END */
 
   const norm = s => (s || "").replace(/\s+/g, " ").trim();
 
