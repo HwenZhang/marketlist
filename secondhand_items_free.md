@@ -29,7 +29,7 @@
 | 小桌子 | 0 | [查看](https://www.racketworld.co.uk/products/head-nano-ti-110-titanium-squash-racket) | ![实况](./figures/IMG_2037.jpeg) | Marston 自取 |
 
 
-## 书籍
+## 书籍(有些是其他小伙伴送给我的，在此表示感谢)
 
 | 物品 | 价格 | 链接 | 图片 | 配送方式 |
 | --- | --- | --- | --- | --- |
