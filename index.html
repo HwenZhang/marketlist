@@ -163,14 +163,15 @@
 
 <script>
   /* =========================================================
-     维护说明：增删改物品请编辑 secondhand_items_free.md，然后运行
+     维护说明：增删改物品请编辑 secondhand_items_free.md，价格改 build.py
+     里的 PRICES 表，然后运行：
        python3 build.py
-     它会自动同步下面的 ITEMS（真实价格按名称保留，作为标价备份）。
+     它会同步下面的 ITEMS 和带价格的 secondhand_items.md。
      不要手改下面 ITEMS_START/END 之间的内容。
-     线上默认所有价格显示为 0；查看真实标价在网址后加 ?priced=1。
+     线上默认显示真实价格；想看免费版在网址后加 ?free=1。
      ========================================================= */
 
-  const FREE_MODE   = true;
+  const FREE_MODE   = false;
   const FORM_BASE   = "https://docs.google.com/forms/d/e/1FAIpQLSdIIbmOkDqVtlSDxpwxxbSE1UaBU1u5Y7panRLNNp98kYJxXw/viewform";
   const ITEM_ENTRY  = "entry.1744656898";
   const CLAIMED_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRNMMbQ3Q4H3-0n-w84dn0oVnQbPd5kAWoWzwN7EYdowhtiNIbiLl0r9E6s3vOAFTnZEpslIrsZ26LO/pub?gid=378112170&single=true&output=csv";
@@ -178,7 +179,7 @@
   /* ITEMS_START — 由 build.py 从 secondhand_items_free.md 自动生成，勿手改 */
   const ITEMS = [
     // ---------- 电子产品 ----------
-    { cat:"电子产品", name:"Xbox Series S(512GB) 游戏机 + 一个 Xbox手柄", price:"0", link:"https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav", img:"figures/IMG_2034.jpeg", ship:"Marston 自取" },
+    { cat:"电子产品", name:"Xbox Series S(512GB) 游戏机 + 一个 Xbox手柄", price:"75£", link:"https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav", img:"figures/IMG_2034.jpeg", ship:"Marston 自取" },
     { cat:"电子产品", name:"LG 4k 显示器", price:"50£", link:"https://www.amazon.co.uk/dp/B07R9M25CT?ref=ppx_yo2ov_dt_b_fed_asin_title", img:"", ship:"6.18后 Science Area 自取" },
     { cat:"电子产品", name:"KOORUI 165Hz, FHD 1080P 显示器", price:"10£", link:"https://www.amazon.co.uk/dp/B0B2RCXTK9?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"figures/IMG_2035.jpeg", ship:"Marston 自取" },
     { cat:"电子产品", name:"键盘", price:"5£", link:"https://www.amazon.co.uk/dp/B07YV7Y425?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1", img:"figures/IMG_2043.jpeg", ship:"Marston 自取" },
@@ -230,7 +231,10 @@
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
-    const priced = !FREE_MODE || new URLSearchParams(location.search).get("priced") === "1";
+    const params = new URLSearchParams(location.search);
+    let priced = !FREE_MODE;
+    if (params.get("priced") === "1") priced = true;
+    if (params.get("free") === "1") priced = false;
     const root = document.getElementById("list");
     const cats = [...new Set(ITEMS.map(it => it.cat))];
     const lightboxes = [];
