@@ -157,7 +157,7 @@
 </div>
 
 <h1><svg class="mascot" width="42" height="42"><use href="#cuti-bunny"/></svg>二手闲置物品清单<svg class="mascot" width="42" height="42"><use href="#cuti-cat"/></svg></h1>
-<p class="sub">喜欢的物品点「我想要 →」登记姓名和联系方式即可～</p>
+<p class="sub">喜欢的物品点「预订 →」登记姓名和联系方式即可～</p>
 
 <div id="list"></div>
 
@@ -178,7 +178,7 @@
   /* ITEMS_START — 由 build.py 从 secondhand_items_free.md 自动生成，勿手改 */
   const ITEMS = [
     // ---------- 电子产品 ----------
-    { cat:"电子产品", name:"Xbox Series S(512GB) 游戏机 + 一个 xbox手柄", price:"75£", link:"https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav", img:"figures/IMG_2034.jpeg", ship:"Marston 自取" },
+    { cat:"电子产品", name:"Xbox Series S(512GB) 游戏机 + 一个 Xbox手柄", price:"0", link:"https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav", img:"figures/IMG_2034.jpeg", ship:"Marston 自取" },
     { cat:"电子产品", name:"LG 4k 显示器", price:"50£", link:"https://www.amazon.co.uk/dp/B07R9M25CT?ref=ppx_yo2ov_dt_b_fed_asin_title", img:"", ship:"6.18后 Science Area 自取" },
     { cat:"电子产品", name:"KOORUI 165Hz, FHD 1080P 显示器", price:"10£", link:"https://www.amazon.co.uk/dp/B0B2RCXTK9?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1", img:"figures/IMG_2035.jpeg", ship:"Marston 自取" },
     { cat:"电子产品", name:"键盘", price:"5£", link:"https://www.amazon.co.uk/dp/B07YV7Y425?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1", img:"figures/IMG_2043.jpeg", ship:"Marston 自取" },
@@ -281,7 +281,7 @@
 
         const tdResp = document.createElement("td");
         const r = document.createElement("a");
-        r.className = "resp"; r.target = "_blank"; r.rel = "noopener"; r.textContent = "我想要 →";
+        r.className = "resp"; r.target = "_blank"; r.rel = "noopener"; r.textContent = "预订 →";
         try {
           const u = new URL(FORM_BASE);
           u.searchParams.set("usp", "pp_url");

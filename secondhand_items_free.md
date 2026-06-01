@@ -4,7 +4,7 @@
 
 | 物品 | 价格 | 链接 | 图片 | 配送方式 |
 | --- | --- | --- | --- | --- |
-| Xbox Series S(512GB) 游戏机 + 一个 xbox手柄 | 0 | [查看](https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav) | ![实况](./figures/IMG_2034.jpeg) | Marston 自取 |
+| Xbox Series S(512GB) 游戏机 + 一个 Xbox手柄 | 0 | [查看](https://www.xbox.com/zh-CN/consoles/xbox-series-s?xr=shellnav) | ![实况](./figures/IMG_2034.jpeg) | Marston 自取 |
 | LG 4k 显示器 | 0 | [查看](https://www.amazon.co.uk/dp/B07R9M25CT?ref=ppx_yo2ov_dt_b_fed_asin_title) | 无 | 6.18后 Science Area 自取 |
 | KOORUI 165Hz, FHD 1080P 显示器 | 0 | [查看](https://www.amazon.co.uk/dp/B0B2RCXTK9?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1) | ![实况](./figures/IMG_2035.jpeg) | Marston 自取 |
 | 键盘 | 0 | [查看](https://www.amazon.co.uk/dp/B07YV7Y425?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1) | ![实况](./figures/IMG_2043.jpeg) | Marston 自取 |
