@@ -48,4 +48,4 @@
 | 初级日语 第二册 第2版 | 0 | 无 | 无 | Science Area 自取 |
 | An Introduction to Physical Geography and the Environment | 0 | 无 | 无 | Science Area 自取 |
 | The Stress Analysis of Cracks Handbook | 0 | 无 | 无 | Science Area 自取 |
-| Lonely Castle in the Mirror | 0 | 无 | 无 | Science Area 自取 |
+| Lonely Castle in the Mirror(镜之孤城) | 0 | 无 | 无 | Science Area 自取 |
