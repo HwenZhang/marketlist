@@ -23,11 +23,11 @@ HTML = pathlib.Path("index.html")
 
 # ===== 价格表：有价格的物品写在这里，其余自动按 0 处理 =====
 PRICES = {
-    "Xbox Series S(512GB) 游戏机 + 一个 Xbox手柄": "75£",
+    "Xbox Series S(512GB) 游戏机 + 一个 Xbox手柄": "50£",
     "LG 4k 显示器": "50£",
     "KOORUI 165Hz, FHD 1080P 显示器": "10£",
     "键盘": "5£",
-    "HEAD Ti S6 Titanium 网球拍 + 网球12个": "20£",
+    "HEAD Ti S6 Titanium 网球拍 + 网球12个": "15£",
     "壁球拍 + 壁球 2 个": "10£",
     "小桌子": "5£",
 }
